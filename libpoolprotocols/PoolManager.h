@@ -25,7 +25,7 @@ public:
     void clearConnections();
     Json::Value getConnectionsJson();
     void setActiveConnection(unsigned int idx);
-    const URI* getActiveConnection();
+    URI getActiveConnectionCopy();
     void removeConnection(unsigned int idx);
     void start();
     void stop();

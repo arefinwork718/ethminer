@@ -316,11 +316,17 @@ void PoolManager::setActiveConnection(unsigned int idx)
     }
 }
 
-const URI* PoolManager::getActiveConnection()
+URI PoolManager::getActiveConnectionCopy()
 {
-    if (m_connections.size() > m_activeConnectionIdx)
-        return &m_connections.at(m_activeConnectionIdx);
-    return nullptr;
+    URI r = URI(":0");
+    try
+    {
+       r = m_connections.at(m_activeConnectionIdx);
+    }
+    catch (...)
+    {
+    }
+    return r;
 }
 
 Json::Value PoolManager::getConnectionsJson()
